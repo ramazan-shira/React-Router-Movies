@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Client Side Routing w/ React Router
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Topics
 
-## Available Scripts
+* React Router
+* Navigating to specific routes
+* Consuming URL Parameters
+* Passing props to components rendered by the Router
 
-In the project directory, you can run:
+## Instructions
 
-### `npm start`
+### Task 1: Project Set-up
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* [ ] **Fork** this repository, then clone your fork.
+* [ ] Execute `npm install` to download dependencies. The `react-router-dom` library is already installed!
+* [ ] Execute `npm run start` to launch your Movies application in Chrome.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Once your application is up and running**, you should see a browser window that looks like [this](./design-files/design-1-starter.png) at `http://localhost:3000`.
 
-### `npm test`
+### Task 2: MVP
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Design Files
 
-### `npm run build`
+Once you are done your application will have two routes:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [ ] [Screenshot of route '/'](./design-files/design-2-routeA.png)
+* [ ] [Screenshot of route '/movies/:id'](./design-files/design-3-routeB.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Set up Routes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [ ] Wrap the `App` component with `BrowserRouter` in `src/index.js`.
+* [ ] Inside your App file add two routes.
+  * [ ] one route for `/` that loads the `MovieList` component. This component will need the movies injected into it via props.
+  * [ ] one route that will take an `id` parameter after`/movies/` (EG: `/movies/2`, `/movies/3` where the id is dynamic). This route should load the `Movie` component.
 
-### `npm run eject`
+#### Add Functionality
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* [ ] When a user clicks on the movie card inside `MovieList` they should be taken to `/movies/{id of clicked movie here}` to see the details of the selected movie.
+* [ ] You will need to modify line 7 of `Movie.js` to get the id of the selected movie from the URL.
+* [ ] Add functionality so the `Home` button on the `SavedList` component navigates back to home.
+* [ ] You should now be able to navigate back and forth between the list of movies and the detailed view of a single movie.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Task 3: Stretch Goals
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you have completed Parts 1 & 2 feel free to move on to these stretch goals.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Refactor so that our code is DRY
 
-## Learn More
+* [ ] You may notice that we are using very similar JSX in the `Movie` component and in the `MovieDetails` component in `MovieList.js`. The main difference is the list of stars, which only exists in the "detailed" view of the `Movie` component.
+* [ ] Create a new component in `MovieCard.js` that returns a Movie Card. Then remove the old code from `Movie` and `MovieDetails` and instead return the new `MovieCard` component.
+* [ ] The Movie Card should be flexible enough to handle displaying a movie with or without the list of stars.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Add `Save Movie` functionality
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [ ] You will notice there is a 'Saved Movies' component that we are not currently using. In this step you will add the functionality to save a movie. You will need to pass the `addToSavedList` function to the `Movie` component. Once you have done that you will need to add a click handler to the save button. You will need to uncomment lines 24-27 in `Movie.js` to complete this.
 
-### Code Splitting
+#### Turn your Saved Movie list into `Link`s
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* [ ] Your list of saved movies should be links to the movie itself. Study and understand what the `saveMovie` function is doing.
