@@ -1,8 +1,9 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 50px 50px;
   font-family: sans-serif;
   background-color: #f2f2f2;
+  box-sizing: border-box;
 }
 
 .movie-card {
@@ -14,6 +15,8 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  box-sizing: border-box;
+  padding-left: 50px;
 }
 
 .movie-director {
