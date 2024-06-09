@@ -7,7 +7,8 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 
 export default function App() {
-  const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
+  const [saved, setSaved] = useState([]);
+
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -32,6 +33,12 @@ export default function App() {
     }
   };
 
+  const removeFromSavedList = (id) => {
+    setSaved((prevSaved) => {
+      return prevSaved.filter((movie) => movie.id !== id);
+    });
+  };
+
   return (
     <div>
       <SavedList list={saved} />
@@ -44,6 +51,7 @@ export default function App() {
             <Movie
               movies={movies}
               addToSavedList={addToSavedList}
+              removeFromSavedList={removeFromSavedList}
               list={saved}
             />
           }

@@ -23,16 +23,19 @@ export default function Movie(props) {
     return <div>Loading movie information...</div>;
   }
 
-  const isSaved = props.list.find((movie) => movie.id === id);
-
-  console.log(isSaved);
+  const isSaved = props.list.some((savedMovie) => savedMovie.id === movie.id);
 
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} expanded />
 
-      {isSaved !== undefined ? (
-        <div className="unsave">Remove from saved</div>
+      {isSaved ? (
+        <div
+          className="save-button"
+          onClick={() => props.removeFromSavedList(movie.id)}
+        >
+          Remove from saved
+        </div>
       ) : (
         <div
           className="save-button"
